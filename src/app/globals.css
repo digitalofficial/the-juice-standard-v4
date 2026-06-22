@@ -123,17 +123,11 @@ img {
 }
 
 /* ========================================================================
-   STICKY HERO — scroll() fade
+   HERO — scroll fade via JS
    ======================================================================== */
-.hero-wrapper {
-  position: relative;
-  height: 200vh;
-}
-
 .hero {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,6 +135,16 @@ img {
   text-align: center;
   padding: 2rem;
   overflow: hidden;
+}
+
+.hero .hero-content {
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+}
+
+.hero.scrolled-past .hero-content {
+  opacity: 0;
+  transform: scale(0.97);
+  filter: blur(6px);
 }
 
 .hero::before {
@@ -218,30 +222,12 @@ img {
   transform: translateY(3px);
 }
 
-/* Scroll-driven hero fade */
-@supports (animation-timeline: scroll()) {
-  .hero-content {
-    animation: hero-fade-out linear both;
-    animation-timeline: scroll();
-    animation-range: 0vh 50vh;
-  }
+/* Hero scroll fade handled by JS scroll listener */
 
-  @keyframes hero-fade-out {
-    from { opacity: 1; transform: translateY(0); filter: blur(0); }
-    to { opacity: 0; transform: translateY(-60px); filter: blur(6px); }
-  }
-}
-
-/* IO fallback for hero */
-.hero-content.io-hidden {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.hero-content.io-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+/* Hero content base state */
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 /* ========================================================================
