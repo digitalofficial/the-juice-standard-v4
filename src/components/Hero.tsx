@@ -4,6 +4,9 @@ export default function Hero() {
   return (
     <div className="hero-wrapper">
       <section className="hero" id="home">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=1600&h=900&fit=crop" alt="Colorful fresh juices and smoothies" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} fetchPriority="high" />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,15,5,0.75), rgba(10,15,5,0.55), rgba(10,15,5,0.85))' }} />
         <div className="hero-content">
           <Logo height={48} />
           <h1>
